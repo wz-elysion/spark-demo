@@ -32,6 +32,8 @@ public class PageRankDemo {
             }).mapToPair(x -> new Tuple2<>(x._1, x._2)).reduceByKey((x, y) -> x + y).mapValues(x -> 0.15 + 0.85 * x);
             ranks.sortByKey().coalesce(1).foreach(x -> FileUtils.writeStringToFile(new File("./pageRank"), x._1 + ":" + String.format("%.2f", x._2) + "    ", "utf-8", true));
             FileUtils.writeStringToFile(new File("./pageRank"), "\n", "utf-8", true);
+//            这里可以直接保存到hdfs上
+//            ranks.saveAsTextFile("hdfs路径");
         }
         while (true) {
 
