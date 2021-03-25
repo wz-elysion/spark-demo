@@ -24,9 +24,9 @@ public class SparkDemo {
         JavaPairRDD<String, String> stage2_F = stage2_D.union(stage2_E);
         JavaPairRDD<String, Tuple2<Iterable<String>, String>> stage3 = stage1_B.join(stage2_F);
         stage3.count();
-        while (true) {
-
-        }
+//        while (true) {
+//
+//        }
     }
 
 }
